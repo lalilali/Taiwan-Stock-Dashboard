@@ -1,0 +1,21 @@
+# Fubon Neo SDK — install manually from the .whl downloaded from Fubon's portal
+# pip install fubon_neo-*.whl
+
+# Data
+yfinance>=0.2.40
+requests>=2.31.0
+pandas>=2.0.0
+numpy>=1.26.0
+
+# Scheduling
+schedule>=1.2.0
+
+# Timezone
+pytz>=2024.1
+
+# Environment / credentials
+python-dotenv>=1.0.0
+
+# Dashboard
+streamlit>=1.35.0
+plotly>=5.22.0
