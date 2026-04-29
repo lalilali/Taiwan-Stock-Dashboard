@@ -22,8 +22,6 @@ spec:
         env:
           - name: TZ
             value: Asia/Taipei
-          - name: STREAMLIT_SERVER_BASE_URL_PATH
-            value: /${APP_NAME}/v${MAJOR_VERSION}
 
 ---
 apiVersion: v1
@@ -46,8 +44,6 @@ status:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
   name: ${APP_NAME}
   namespace: default
 spec:
@@ -61,4 +57,4 @@ spec:
                 port:
                   number: 80
             path: /${APP_NAME}/v${MAJOR_VERSION}(/|$)(.*)
-            pathType: ImplementationSpecific
+            pathType: Prefix
