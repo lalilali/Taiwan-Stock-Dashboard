@@ -22,6 +22,8 @@ spec:
         env:
           - name: TZ
             value: Asia/Taipei
+          - name: STREAMLIT_SERVER_BASE_URL_PATH
+            value: /${APP_NAME}/v${MAJOR_VERSION}
 
 ---
 apiVersion: v1
@@ -59,4 +61,4 @@ spec:
                 port:
                   number: 80
             path: /${APP_NAME}/v${MAJOR_VERSION}(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
