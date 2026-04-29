@@ -17,11 +17,13 @@ EXPOSE 80
 ENV TZ=Asia/Taipei \
     PYTHONUNBUFFERED=1
 
+# IMPORTANT: The healthcheck URL must also include the base path
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD curl -sf http://localhost:80/_stcore/health || exit 1
+    CMD curl -sf http://localhost:80/k8s/rat-trade/v1/_stcore/health || exit 1
 
 CMD ["streamlit", "run", "dashboard.py", \
      "--server.port=80", \
      "--server.address=0.0.0.0", \
      "--server.headless=true", \
-     "--browser.gatherUsageStats=false"]
+     "--browser.gatherUsageStats=false", \
+     "--server.baseUrlPath=/k8s/rat-trade/v1"]
